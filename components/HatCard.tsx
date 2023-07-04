@@ -19,7 +19,7 @@ const HatCard: React.FC<HatProps> = ({ hats }) => {
             {
                 hats.map((hat, index) => {
                     return (
-                        <div key={index} className="flex flex-col justify-center items-center border-2 bg-[#DCD7C9] border-[#A27B5C] w-[200px]">
+                        <div key={index} className="flex flex-col justify-center items-center border-2 bg-[#DCD7C9] border-[#A27B5C] w-[200px] text-white">
                             <span>{hat.img}</span>
                             <span>{hat.name}</span>
                         </div>

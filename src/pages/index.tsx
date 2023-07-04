@@ -2,8 +2,8 @@ import Image from 'next/image'
 import HatCard, { HatCardInfo } from '../../components/HatCard'
 
 
-export const hats : HatCardInfo[]=[
-  {name: "Orc Hero Helm", img:"/OrcHero"}
+export const hatsInfo : HatCardInfo[]=[
+  {name: "Orc Hero Helm", img:"./OrcHeroHelm"}
 ]
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       </div>
 
       <div className='px-20'>
-        <h1>hats cards here</h1>
+        <HatCard hats={hatsInfo}/>
       </div>
     </div>
   )
