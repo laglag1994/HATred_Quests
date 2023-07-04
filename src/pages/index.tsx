@@ -1,14 +1,23 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import HatCard, { HatCardInfo } from '../../components/HatCard'
 
-const inter = Inter({ subsets: ['latin'] })
+
+export const hats : HatCardInfo[]=[
+  {name: "Orc Hero Helm", img:"/OrcHero"}
+]
 
 export default function Home() {
   return (
-    <div>
-      <h1 className='text-red-500 text-5xl'>
-        hi mom
-      </h1>
+    <div className='flex flex-col justify-start items-center gap-10 bg-[#2C3639] min-h-screen pb-20'>
+
+      <div className='flex justify-center items-center gap-2 bg-[#3F4E4F] w-full py-5'>
+        <img src="/PRM.png" alt="" height={100} width={100} />
+        <h1 className='text-4xl text-white'>HATred Quests</h1>
+      </div>
+
+      <div className='px-20'>
+        <h1>hats cards here</h1>
+      </div>
     </div>
   )
 }
