@@ -2,7 +2,8 @@ import { type } from 'os'
 import React, { useEffect, useState } from 'react'
 import { Monster } from "@prisma/client"
 import { Hatred } from '@prisma/client'
-import Modal from './Modal'
+import ViewHatModal from './ViewHatModal'
+
 
 export type HatCardInfo = {
     hatName: string;
@@ -13,10 +14,10 @@ export type HatCardInfo = {
     monsters: Monster[];
 }
 
+
 interface HatProps {
     hats: HatCardInfo[]
 }
-
 
 
 const HatCard: React.FC<HatProps> = ({ hats }) => {
@@ -29,7 +30,7 @@ const HatCard: React.FC<HatProps> = ({ hats }) => {
                 hats.map((hat, index) => {
                     return (
                         <div
-                           
+
                             key={index}
                             className="flex flex-col justify-center items-center text-white  bg-[#DCD7C9] px-[20px]"
                         >
@@ -37,13 +38,13 @@ const HatCard: React.FC<HatProps> = ({ hats }) => {
                                 <img src={hat.hatImg} alt={hat.hatName} height={100} width={75} />
                             </span>
                             <span className='py-2'>{hat.hatName}</span>
-                            <button  onClick={() => setShowModal(true)}>click</button>
-                        </div> 
+                            <button onClick={() => setShowModal(true)}>click</button>
+                        </div>
                     )
                 })
             }
 
-            <Modal show={showModal} setShow={setShowModal} hatred />
+            <ViewHatModal show={showModal} setShow={setShowModal} hatredView={hats.id} />
         </div>
     )
 }

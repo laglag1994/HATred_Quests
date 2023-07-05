@@ -1,27 +1,30 @@
 import Modal from "./Modal";
 import { Hatred } from "@prisma/client";
 
+
 interface viewHatInfo {
     show: boolean;
     setShow: (show: boolean) => void;
-    hatred: Hatred
+    hatredView: Hatred
 }
 
 
-const ViewHatModal: React.FC<viewHatInfo> = ({ hatred, show, setShow }) => {
+const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
+
+    console.log(hatredView.hatName)
     return (
-        <Modal show={show} setShow={setShow} title={hatred.hatName}>
+        <Modal show={show} setShow={setShow} title={hatredView.hatName}>
             <div className="flex">
                 <div>
                     <span>
-                        <img src={hatred.mapImg} alt="" />
+                        <img src={hatredView.mapImg} alt="" />
                     </span>
-                    <span>{hatred.mapName}</span>
+                    <span>{hatredView.mapName}</span>
                 </div>
 
                 <div>
                     <span>
-                        <img src={hatred.info} alt="" />
+                        <img src={hatredView.info} alt="" />
                     </span>
                 </div>
             </div>
