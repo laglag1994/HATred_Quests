@@ -22,3 +22,5 @@ model Monster {
   monsterName String
   hatreds     Hatred[]
 }
+
+
