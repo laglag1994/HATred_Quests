@@ -6,6 +6,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Hatred {
+  id       Int       @id @default(autoincrement())
+  name     String
+  map      String
+  info     String
+  monsters Monster[]
+}
+
+model Monster {
+  id      Int      @id @default(autoincrement())
+  name    String
+  hatreds Hatred[]
 }
