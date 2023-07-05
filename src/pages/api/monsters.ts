@@ -9,10 +9,10 @@ export default async function monsterHandler(req: NextApiRequest, res: NextApiRe
     if (req.method === 'GET') {
         try {
             const monsters = await prisma.monster.findMany()
-            res.status(200).json(monsters)
+            res.status(201).json(monsters)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Failed to fetch monsters' });
+            return res.status(500).json({ error: 'Failed to fetch monsters' });
         }
     } else if (req.method === 'POST') {
         try {
@@ -20,7 +20,7 @@ export default async function monsterHandler(req: NextApiRequest, res: NextApiRe
             res.status(201).json(newMonster)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Failed to create monsters' });
+            return res.status(500).json({ error: 'Failed to create monsters' });
         }
     }
 }

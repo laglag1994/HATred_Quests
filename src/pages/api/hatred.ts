@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { info } from 'console';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 
@@ -16,11 +17,22 @@ export default async function hatredHandler(req: NextApiRequest, res: NextApiRes
         }
     } else if (req.method === 'POST') {
         try {
-            const newHat = await prisma.hatred.create({ data: req.body })
+            const newHat = await prisma.hatred.create({
+                data: {
+                    name: req.body.name,
+                    map: req.body.map,
+                    info: req.body.info,
+                    monsters: {
+                        connect: req.body.monsters.map((monster: { id: any; }) => ({ id: monster.id })),
+                    },
+                },
+                include: { monsters: true },
+
+            })
             res.status(201).json(newHat)
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error: 'Failed to create hats' });
+            res.status(500).json({ error: 'Failed to create a hat' });
         }
     }
 }
