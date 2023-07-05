@@ -9,7 +9,7 @@ export default async function monsterHandler(req: NextApiRequest, res: NextApiRe
     if (req.method === 'GET') {
         try {
             const monsters = await prisma.monster.findMany()
-            res.status(201).json(monsters)
+            return res.status(200).json(monsters)
         } catch (error) {
             console.log(error)
             return res.status(500).json({ error: 'Failed to fetch monsters' });

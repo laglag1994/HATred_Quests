@@ -9,7 +9,9 @@ export default async function hatredHandler(req: NextApiRequest, res: NextApiRes
 
     if (req.method === 'GET') {
         try {
-            const hats = await prisma.hatred.findMany()
+            const hats = await prisma.hatred.findMany({
+                include: { monsters: true },
+            })
             res.status(200).json(hats)
         } catch (error) {
             console.log(error)
@@ -19,8 +21,10 @@ export default async function hatredHandler(req: NextApiRequest, res: NextApiRes
         try {
             const newHat = await prisma.hatred.create({
                 data: {
-                    name: req.body.name,
-                    map: req.body.map,
+                    hatName: req.body.hatName,
+                    hatImg: req.body.hatImg,
+                    mapName: req.body.mapName,
+                    mapImg: req.body.mapImg,
                     info: req.body.info,
                     monsters: {
                         connect: req.body.monsters.map((monster: { id: any; }) => ({ id: monster.id })),

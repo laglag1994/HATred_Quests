@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,14 +9,16 @@ datasource db {
 
 model Hatred {
   id       Int       @id @default(autoincrement())
-  name     String
-  map      String
+  hatName  String
+  hatImg   String
+  mapName  String
+  mapImg   String
   info     String
   monsters Monster[]
 }
 
 model Monster {
-  id      Int      @id @default(autoincrement())
-  name    String
-  hatreds Hatred[]
+  id          Int      @id @default(autoincrement())
+  monsterName String
+  hatreds     Hatred[]
 }
