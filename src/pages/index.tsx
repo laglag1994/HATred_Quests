@@ -1,12 +1,24 @@
 import Image from 'next/image'
 import HatCard, { HatCardInfo } from '../../components/HatCard'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
+// const queryClient = new QueryClient()
 
-export const hatsInfo : HatCardInfo[]=[
-  {name: "Orc Hero Helm", img:"./OrcHeroHelm"}
-]
 
 export default function Home() {
+
+
+  const { isLoading, error, data } = useQuery("hatlist", () =>
+    fetch('/api/hatred').then(res => res.json())
+  )
+
+  if (isLoading) return 'Loading...'
+
+  if (error) return 'An error has occurred: ' + error
+
+
+
+
   return (
     <div className='flex flex-col justify-start items-center gap-10 bg-[#2C3639] min-h-screen pb-20'>
 
@@ -16,8 +28,11 @@ export default function Home() {
       </div>
 
       <div className='px-20'>
-        <HatCard hats={hatsInfo}/>
+        <HatCard hats={data} />
       </div>
     </div>
   )
 }
+
+
+
