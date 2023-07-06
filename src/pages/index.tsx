@@ -29,7 +29,7 @@ export default function Home() {
 
 
       
-      <div className='px-20 flex flex-col gap-4 justify-end items-end w-full text-right'>
+      <div className='px-20 flex flex-col gap-4 justify-start items-start w-full text-left'>
         <div>
           <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 1 to 30</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 1 && lvl.mapLvlTo <= 30)} />

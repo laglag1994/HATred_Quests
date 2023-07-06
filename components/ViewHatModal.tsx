@@ -34,11 +34,11 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
                     </ul>
                     <div className="flex gap-1">
                         <span className="font-bold">Map lvl:</span>
-                        <span className="text-red-700">{`${hatredView.mapLvlFrom} ~ ${hatredView.mapLvlTo}`}</span>
+                        <span className="text-red-700 font-bold">{`${hatredView.mapLvlFrom} ~ ${hatredView.mapLvlTo}`}</span>
                     </div>
                     <div className="flex gap-1">
                         <span className="font-bold">Tier:</span>
-                        <span className="text-red-700">{hatredView.tier}</span>
+                        <span className="text-red-700 font-bold">{hatredView.tier}</span>
                     </div>
 
                 </div>
