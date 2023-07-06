@@ -31,37 +31,37 @@ export default function Home() {
       
       <div className='px-20 flex flex-col gap-4 justify-start items-start w-full text-left'>
         <div>
-          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 1 to 30</span>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>LVL 1 to 30</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 1 && lvl.mapLvlTo <= 30)} />
         </div>
 
         <div>
-          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 30 to 50</span>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>LVL 30 to 50</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 30 && lvl.mapLvlTo <= 50)} />
         </div>
 
         <div>
-          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 50 to 70</span>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>LVL 50 to 70</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 50 && lvl.mapLvlTo <= 70)} />
         </div>
 
         <div>
-          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 70 to 90</span>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>LVL 70 to 90</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 70 && lvl.mapLvlTo <= 90)} />
         </div>
 
         <div>
-          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 90 to 110</span>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>LVL 90 to 110</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 90 && lvl.mapLvlTo <= 110)} />
         </div>
 
         <div>
-          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 110 to 130</span>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>LVL 110 to 130</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 110 && lvl.mapLvlTo <= 130)} />
         </div>
 
         <div>
-          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 130 to 150</span>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>LVL 130 to 150</span>
           <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 130 && lvl.mapLvlTo <= 150)} />
         </div>
       </div>
