@@ -20,12 +20,12 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
     return (
         <Modal show={show} setShow={setShow} title={hatredView.hatName}>
             <div className="flex gap-5" >
-                <div className="flex flex-col gap-1 ">
+                <div className="flex flex-col gap-1 text-left ">
                     <span>
                         <img src={hatredView.info} alt="" />
                     </span>
                     <span className="font-bold">Monster:</span>
-                    <ul className='list-disc px-10'>
+                    <ul className='list-disc px-10 '>
                         {hatredView.monsters.map((mob, mobIndex) => (
                             <li className="" key={mobIndex}>
                                 {mob.monsterName}

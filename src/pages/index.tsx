@@ -26,9 +26,46 @@ export default function Home() {
         <h1 className='text-4xl text-white'>HATred Quests</h1>
       </div>
 
-      <div className='px-20'>
-        <HatCard hats={data} />
+
+
+      
+      <div className='px-20 flex flex-col gap-4 justify-end items-end w-full text-right'>
+        <div>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 1 to 30</span>
+          <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 1 && lvl.mapLvlTo <= 30)} />
+        </div>
+
+        <div>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 30 to 50</span>
+          <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 30 && lvl.mapLvlTo <= 50)} />
+        </div>
+
+        <div>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 50 to 70</span>
+          <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 50 && lvl.mapLvlTo <= 70)} />
+        </div>
+
+        <div>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 70 to 90</span>
+          <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 70 && lvl.mapLvlTo <= 90)} />
+        </div>
+
+        <div>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 90 to 110</span>
+          <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 90 && lvl.mapLvlTo <= 110)} />
+        </div>
+
+        <div>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 110 to 130</span>
+          <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 110 && lvl.mapLvlTo <= 130)} />
+        </div>
+
+        <div>
+          <span className='text-xl text-gold border-b border-white text-white pb-3 w-1/4'>from 130 to 150</span>
+          <HatCard hats={data.filter((lvl) => lvl.mapLvlFrom >= 130 && lvl.mapLvlTo <= 150)} />
+        </div>
       </div>
+
     </div>
   )
 }

@@ -27,7 +27,7 @@ const HatCard: React.FC<HatProps> = ({ hats }) => {
 
     return (
         <div>
-            <div className="flex justify-center items-center gap-10 flex-wrap " >
+            <div className="flex justify-center items-center gap-10 flex-wrap py-10" >
                 {
                     hats.map((hat, index) => {
                         return (
