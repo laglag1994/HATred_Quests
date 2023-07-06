@@ -2,7 +2,6 @@ import Image from 'next/image'
 import HatCard, { HatCardInfo } from '../../components/HatCard'
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
-// const queryClient = new QueryClient()
 
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
 
 
 
-
+  console.log(data, "hats data")
   return (
     <div className='flex flex-col justify-start items-center gap-10 bg-[#2C3639] min-h-screen pb-20'>
 
