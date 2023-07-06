@@ -27,24 +27,23 @@ const HatCard: React.FC<HatProps> = ({ hats }) => {
 
     return (
         <div>
-            <div className="flex justify-center items-center gap-10 flex-wrap">
+            <div className="flex justify-center items-center gap-10 flex-wrap " >
                 {
                     hats.map((hat, index) => {
                         return (
                             <div
-
+                                onClick={() => {
+                                    setShowModal(true)
+                                    setSelectedHat(hat);
+                                }}
                                 key={index}
-                                className="flex flex-col justify-center items-center text-white  border-2 border-[#DCD7C9] w-[200px]"
+                                className="flex flex-col gap-2 justify-center items-center text-white bg-[#3F4E4F] shadow-black shadow-sm rounded-md w-[180px] py-5 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
                             >
                                 <span>
                                     <img src={hat.hatImg} alt={hat.hatName} height={100} width={75} />
                                 </span>
-                                <span className='py-2'>{hat.hatName}</span>
+                                <span>{hat.hatName}</span>
 
-                                <button onClick={() => {
-                                    setShowModal(true)
-                                    setSelectedHat(hat);
-                                }}>click</button>
                             </div>
                         )
                     })

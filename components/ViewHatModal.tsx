@@ -19,23 +19,35 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
     console.log(hatredView.hatName)
     return (
         <Modal show={show} setShow={setShow} title={hatredView.hatName}>
-            <div className="flex " >
-                <div>
-                    <span>
-                        <img src={hatredView.mapImg} alt="" />
-                    </span>
-                    <span>{hatredView.mapName}</span>
-                </div>
-
-                <div>
+            <div className="flex gap-5" >
+                <div className="flex flex-col gap-1 ">
                     <span>
                         <img src={hatredView.info} alt="" />
                     </span>
-                    <div className='flex flex-col'>
+                    <span className="font-bold">Monster:</span>
+                    <ul className='list-disc px-10'>
                         {hatredView.monsters.map((mob, mobIndex) => (
-                            <span key={mobIndex}>{mob.monsterName}</span>
+                            <li className="" key={mobIndex}>
+                                {mob.monsterName}
+                            </li>
                         ))}
+                    </ul>
+                    <div className="flex gap-1">
+                        <span className="font-bold">Map lvl:</span>
+                        <span className="text-red-700">{`${hatredView.mapLvlFrom} ~ ${hatredView.mapLvlTo}`}</span>
                     </div>
+                    <div className="flex gap-1">
+                        <span className="font-bold">Tier:</span>
+                        <span className="text-red-700">{hatredView.tier}</span>
+                    </div>
+
+                </div>
+                <div className="flex flex-col gap-1 items-end">
+                    <span>
+                        <img src={hatredView.mapImg} alt="" />
+                    </span>
+                    <span className="font-bold">{hatredView.mapName}</span>
+
                 </div>
             </div>
 

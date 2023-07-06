@@ -8,15 +8,16 @@ datasource db {
 }
 
 model Hatred {
-  id       Int       @id @default(autoincrement())
-  hatName  String
-  hatImg   String
-  mapName  String
-  mapImg   String
-  mapLvl   String
-  info     String
-  tier     String?
-  monsters Monster[]
+  id         Int       @id @default(autoincrement())
+  hatName    String
+  hatImg     String
+  mapName    String
+  mapImg     String
+  mapLvlFrom Int
+  mapLvlTo   Int
+  info       String
+  tier       String?
+  monsters   Monster[]
 }
 
 model Monster {
