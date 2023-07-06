@@ -25,7 +25,9 @@ export default async function hatredHandler(req: NextApiRequest, res: NextApiRes
                     hatImg: req.body.hatImg,
                     mapName: req.body.mapName,
                     mapImg: req.body.mapImg,
+                    mapLvl:req.body.mapLvl,
                     info: req.body.info,
+                    tier:req.body.tier,
                     monsters: {
                         connect: req.body.monsters.map((monster: { id: any; }) => ({ id: monster.id })),
                     },

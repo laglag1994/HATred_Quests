@@ -13,7 +13,9 @@ model Hatred {
   hatImg   String
   mapName  String
   mapImg   String
+  mapLvl   String
   info     String
+  tier     String?
   monsters Monster[]
 }
 
@@ -22,5 +24,3 @@ model Monster {
   monsterName String
   hatreds     Hatred[]
 }
-
-
