@@ -25,11 +25,10 @@ const Admin = () => {
 
         if (token) {
             const json = jwt.decode(token) as { [key: string]: string }
-            setMsg(`welcome ${json.username} and you are ${json.admin ? "an admin" : "not an admin"}`)
             console.log(json)
             router.push('/dashboard');
         } else {
-            setMsg("something went wrong")
+            setMsg("wrong")
         }
     }
 
