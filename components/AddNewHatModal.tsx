@@ -1,4 +1,5 @@
 import Modal from "./Modal";
+import { useEffect, useState } from "react";
 
 
 interface AddNewHat {
@@ -8,6 +9,38 @@ interface AddNewHat {
 
 
 const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
+
+    const [name, setName] = useState("")
+    const [map, setMap] = useState("")
+    const [lvlFrom, setLvlFrom] = useState(0)
+    const [lvlTo, setLvlTo] = useState(0)
+    const [tier, setTier] = useState("")
+    const [monsters, setMonsters] = useState([])
+    const [hatImg, setHatImg] = useState("")
+    const [mapImg, setMapImg] = useState("")
+    const [info, setInfo] = useState("")
+
+
+    const handleAddHat = async () => {
+        const response = await fetch("/api/hatred", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                hatName: name,
+                mapName: map,
+                mapLvlFrom: lvlFrom,
+                mapLvlTo: lvlTo,
+                tier: tier,
+                monsters: [monsters],
+                hatImg: hatImg,
+                mapImg: mapImg,
+                info: info
+            })
+        })
+    }
+
 
     return (
         <Modal show={show} setShow={setShow} title="Add New Hat">
