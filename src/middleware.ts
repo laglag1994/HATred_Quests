@@ -1,5 +1,6 @@
 import { error } from "console";
 import { NextApiRequest } from "next";
+import { verifyAuth } from "./lib/auth";
 
 export async function middleware(req: NextApiRequest) {
     // is it defined?

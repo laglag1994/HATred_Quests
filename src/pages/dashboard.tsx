@@ -1,13 +1,9 @@
 import { FC } from "react";
 
-
-
-
-
-
 interface Props {
 
 }
+
 
 const dashBoard: FC<Props> = ({ }) => {
     return (
