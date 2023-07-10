@@ -55,14 +55,14 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
 
     }
 
-    const handleMonsterChange = (e: { target: { value: string; }; }) => {
+    const handleMonsterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const monsterNames = e.target.value.split(",").map((name) => name.trim());
-
+      
         const monsterObjects = monsterNames.map((name) => ({ monsterName: name }));
-
+      
         setMonsters(monsterObjects);
-    };
-
+      };
+      
 
 
 
