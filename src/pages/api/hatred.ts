@@ -25,13 +25,13 @@ export default async function hatredHandler(req: NextApiRequest, res: NextApiRes
                     hatImg: req.body.hatImg,
                     mapName: req.body.mapName,
                     mapImg: req.body.mapImg,
-                    mapLvlFrom:req.body.mapLvlFrom,
-                    mapLvlTo:req.body.mapLvlTo,
+                    mapLvlFrom: req.body.mapLvlFrom,
+                    mapLvlTo: req.body.mapLvlTo,
                     info: req.body.info,
-                    tier:req.body.tier,
+                    tier: req.body.tier,
                     monsters: {
-                        connect: req.body.monsters.map((monster: { id: any; }) => ({ id: monster.id })),
-                    },
+                        create: req.body.monsters,
+                      },
                 },
                 include: { monsters: true },
 

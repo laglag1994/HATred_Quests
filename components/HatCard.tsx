@@ -37,7 +37,7 @@ const HatCard: React.FC<HatProps> = ({ hats }) => {
                                     setSelectedHat(hat);
                                 }}
                                 key={index}
-                                className="flex flex-col gap-2 justify-center items-center text-white bg-[#3F4E4F] shadow-black shadow-sm rounded-md w-[180px] py-5 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
+                                className="flex flex-col gap-2 justify-center items-center text-white bg-[#3F4E4F] shadow-black shadow-sm rounded-md w-[200px] py-6 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
                             >
                                 <span>
                                     <img src={hat.hatImg} alt={hat.hatName} height={100} width={75} />
