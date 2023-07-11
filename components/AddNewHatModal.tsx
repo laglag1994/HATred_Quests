@@ -1,5 +1,5 @@
 import Modal from "./Modal";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 
 interface AddNewHat {
@@ -19,6 +19,7 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
     const [hatImg, setHatImg] = useState("")
     const [mapImg, setMapImg] = useState("")
     const [info, setInfo] = useState("")
+    const [selectedFile, setSelectedFile] = useState(null);
 
 
     const handleAddHat = async () => {
@@ -34,7 +35,7 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
                     mapLvlFrom: lvlFrom,
                     mapLvlTo: lvlTo,
                     tier: tier,
-                    monsters: { monsterName: monsters },
+                    monsters: monsters ,
                     hatImg: hatImg,
                     mapImg: mapImg,
                     info: info,
@@ -43,10 +44,8 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
 
             })
             if (response.ok) {
-                // Handle successful response
                 console.log("Hat added successfully");
             } else {
-                // Handle error response
                 console.error("Failed to add hat");
             }
         } catch (error) {
@@ -64,6 +63,20 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
       };
       
 
+
+      const handleChange = (e: { target: { files: any; value: SetStateAction<null>; }; }) => {
+        let files = e.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = (e) => {
+          console.log('image data: ', e.target.result);
+        };
+        setSelectedFile(e.target.value);
+        // setSelectedFile(e.target.value);
+        console.log(selectedFile);
+      };
+
+      
 
 
     return (
