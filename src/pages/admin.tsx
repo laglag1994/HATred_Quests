@@ -15,22 +15,29 @@ const Admin = () => {
 
     async function onSubmit() {
         const res = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ username, password })
-        }).then((t) => t.json())
-        const token = res.token
-
-        if (token) {
-            const json = jwt.decode(token) as { [key: string]: string }
-            console.log(json)
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+    
+        if (res.status === 200) {
+          const data = await res.json();
+          const token = data.token;
+    
+          if (token) {
+            const decodedToken = jwt.decode(token) as { [key: string]: string };
+            console.log(decodedToken);
+            localStorage.setItem('token', token); 
             router.push('/dashboard');
+          } else {
+            setMsg('Wrong credentials');
+          }
         } else {
-            setMsg("wrong")
+          setMsg('Wrong credentials');
         }
-    }
+      }
 
 
     return (

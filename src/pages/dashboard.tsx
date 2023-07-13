@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 import AddNewHatModal from "../../components/AddNewHatModal";
+import requireAuthentication from "../../components/WithAuthentication"
+
 
 
 const Dashboard = () => {
@@ -30,4 +32,6 @@ const Dashboard = () => {
     );
 }
 
-export default Dashboard;
+const AuthenticatedDashboard = requireAuthentication(Dashboard);
+
+export default AuthenticatedDashboard;
