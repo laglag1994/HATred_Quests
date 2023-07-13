@@ -22,7 +22,7 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
             <div className="flex gap-5" >
                 <div className="flex flex-col gap-1 text-left ">
                     <span>
-                        <img src={hatredView.info} alt="" />
+                        <img src={`static/${hatredView.info}`} alt="" />
                     </span>
                     <span className="font-bold">Monster:</span>
                     <ul className='list-disc px-10 '>
@@ -44,7 +44,7 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
                 </div>
                 <div className="flex flex-col gap-1 items-end">
                     <span>
-                        <img src={hatredView.mapImg} alt="" />
+                        <img src={`static/${hatredView.mapImg}`} alt="" />
                     </span>
                     <span className="font-bold">{hatredView.mapName}</span>
 

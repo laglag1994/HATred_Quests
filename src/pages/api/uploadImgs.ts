@@ -17,7 +17,7 @@ const readFile = (
 ): Promise<{ fields: formidable.Fields; files: formidable.Files }> => {
     const options: formidable.Options = {}
     if (saveLocally) {
-        options.uploadDir = path.join(process.cwd(), "/public")
+        options.uploadDir = path.join(process.cwd(), "/public/static")
         options.filename = (name, ext, path, form) => {
             return "" + path.originalFilename
         }
@@ -33,9 +33,9 @@ const readFile = (
 
 const handler: NextApiHandler = async (req, res) => {
     try {
-        await fs.readdir(path.join() + "/public")
+        await fs.readdir(path.join() + "/public/static")
     } catch (error) {
-        await fs.mkdir(path.join() + "/public")
+        await fs.mkdir(path.join() + "/public/static")
         console.log(error)
     }
 
