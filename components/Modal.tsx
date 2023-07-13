@@ -9,14 +9,14 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ children, show, setShow, title, className }) => {
-	const boxRef = useRef(null)
+	const boxRef = useRef<HTMLDivElement>(null) // Provide the type assertion
 
 	if (!show) return null
 
 	return (
 		<div
 			onClick={(e) => {
-				if (boxRef.current && !boxRef.current.contains(e.target))
+				if (boxRef.current && !boxRef.current.contains(e.target as Node))
 					setShow(false)
 			}}
 			className={`fixed z-200 w-screen h-screen inset-0 bg-black bg-opacity-60 transition-all`}
