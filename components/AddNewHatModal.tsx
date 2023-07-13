@@ -25,23 +25,23 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
 
 
     //map
-    const [uploadMap, setUploadMap] = useState(false)
+    // const [uploadMap, setUploadMap] = useState(false)
     const [selectedMap, setSelectedMap] = useState("")
     const [mapImg, setMapImg] = useState<File>()
 
 
     //info
-    const [uploadInfo, setUploadInfo] = useState(false)
+    // const [uploadInfo, setUploadInfo] = useState(false)
     const [selectedInfo, setSelectedInfo] = useState("")
-    const [info, setInfo] = useState<File>()
+    const [infoImg, setInfoImg] = useState<File>()
 
 
 
     const handleAddHat = async () => {
         try {
-            const hatImgName = hatImg ? hatImg.name : ""; // Get the file name or an empty string if no file is selected
-            const mapImgName = mapImg ? mapImg.name : ""; // Get the file name or an empty string if no file is selected
-            const infoName = info ? info.name : ""; // Get the file name or an empty string if no file is selected
+            const hatImgName = hatImg ? hatImg.name : "";
+            const mapImgName = mapImg ? mapImg.name : "";
+            const infoName = infoImg ? infoImg.name : "";
 
             const response = await fetch("/api/hatred", {
                 method: "POST",
@@ -73,12 +73,12 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
 
     }
 
-    const uploadImfFunc = async () => {
+    const uploadImgFunc = async (img: File) => {
         try {
-            if (!hatImg) return
+            if (!img) return
 
             const formData = new FormData()
-            formData.append("myImg", hatImg)
+            formData.append("myImg", img)
             const response = await fetch("/api/uploadImgs", {
                 method: "POST",
                 body: formData
@@ -87,16 +87,14 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
         } catch (error) {
             console.log(error)
         }
-
     }
 
-
-    const uploadMapFunc = async () => {
+    const uploadMapFunc = async (map: File) => {
         try {
-            if (!mapImg) return
+            if (!map) return
 
             const formData = new FormData()
-            formData.append("myMap", mapImg)
+            formData.append("myMap", map)
             const response = await fetch("/api/uploadImgs", {
                 method: "POST",
                 body: formData
@@ -105,11 +103,9 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
         } catch (error) {
             console.log(error)
         }
-
     }
 
-
-    const uploadInfoFunc = async () => {
+    const uploadInfoFunc = async (info: File) => {
         try {
             if (!info) return
 
@@ -125,11 +121,6 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
         }
 
     }
-
-
-
-
-
 
 
 
@@ -201,6 +192,7 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
                                 if (target.files) {
                                     const file = target.files[0]
                                     setSelectedImg(URL.createObjectURL(file))
+                                    uploadImgFunc(file);
                                     setHatImg(file)
                                 }
                             }} />
@@ -214,6 +206,7 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
                                 if (target.files) {
                                     const file = target.files[0]
                                     setSelectedMap(URL.createObjectURL(file))
+                                    uploadMapFunc(file)
                                     setMapImg(file)
                                 }
                             }}
@@ -228,16 +221,14 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
                                 if (target.files) {
                                     const file = target.files[0]
                                     setSelectedInfo(URL.createObjectURL(file))
-                                    setInfo(file)
+                                    uploadInfoFunc(file)
+                                    setInfoImg(file)
                                 }
                             }} />
                     </div>
 
                     <input
                         onClick={() => {
-                            uploadImfFunc()
-                            uploadMapFunc()
-                            uploadInfoFunc()
                             handleAddHat()
                         }}
                         className='bg-[#a27b5c] cursor-pointer py-2 text-white hover:opacity-80 transition-all duration-200'

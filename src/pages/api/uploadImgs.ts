@@ -34,8 +34,9 @@ const readFile = (
 const handler: NextApiHandler = async (req, res) => {
     try {
         await fs.readdir(path.join() + "/public")
-    } catch {
+    } catch (error) {
         await fs.mkdir(path.join() + "/public")
+        console.log(error)
     }
 
     await readFile(req,true)
