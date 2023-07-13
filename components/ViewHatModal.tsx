@@ -7,7 +7,7 @@ interface viewHatInfo {
     setShow: (show: boolean) => void;
     hatredView: Hatred & {
         monsters: Monster[];
-    }
+    } | null; 
 
 }
 
