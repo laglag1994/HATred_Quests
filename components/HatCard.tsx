@@ -27,7 +27,6 @@ const HatCard: React.FC<HatProps> = ({ hats, deleteButton }) => {
 
   const [showModal, setShowModal] = useState(false)
   const [selectedHat, setSelectedHat] = useState<HatCardInfo | null>(null);
-  const [id, setId] = useState<number>()
 
 
   const handleDelete = async (hatId: number) => {
@@ -70,10 +69,11 @@ const HatCard: React.FC<HatProps> = ({ hats, deleteButton }) => {
               >
                 {deleteButton === true ? (
                   <button
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation()
                       handleDelete(hat.id)
                     }}
-                    className='absolute bg-red-700 px-2 translate-x-24 -translate-y-20 font-bold'
+                    className='absolute bg-red-700 px-2 translate-x-24 -translate-y-20 font-bold hover:bg-red-900'
                   >
                     X
                   </button>

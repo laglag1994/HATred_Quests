@@ -6,7 +6,7 @@ interface viewHatInfo {
   show: boolean;
   setShow: (show: boolean) => void;
   hatredView: Hatred & {
-    requirements: Requirements[];
+    requirements?: Requirements[];
   } | null; 
 
 }
@@ -25,7 +25,7 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
           </span>
           <span className="font-bold">Requires:</span>
           <ul className='list-disc px-10 '>
-            {hatredView.requirements.map((req, index) => (
+            {hatredView.requirements?.map((req, index) => (
               <li className="" key={index}>
                 {req.reqs}
               </li>
