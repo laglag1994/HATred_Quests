@@ -15,23 +15,20 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
   const [lvlFrom, setLvlFrom] = useState(0)
   const [lvlTo, setLvlTo] = useState(0)
   const [tier, setTier] = useState("")
-  const [monsters, setMonsters] = useState<{ monsterName: string }[]>([]);
+  const [requires, setRequires] = useState<string[]>([]);
 
 
   //img
-  // const [uploadImg, setUploadImg] = useState(false)
   const [selectedImg, setSelectedImg] = useState("")
   const [hatImg, setHatImg] = useState<File>()
 
 
   //map
-  // const [uploadMap, setUploadMap] = useState(false)
   const [selectedMap, setSelectedMap] = useState("")
   const [mapImg, setMapImg] = useState<File>()
 
 
   //info
-  // const [uploadInfo, setUploadInfo] = useState(false)
   const [selectedInfo, setSelectedInfo] = useState("")
   const [infoImg, setInfoImg] = useState<File>()
 
@@ -54,16 +51,16 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
           mapLvlFrom: lvlFrom,
           mapLvlTo: lvlTo,
           tier: tier,
-          monsters: monsters,
+          reqs: requires,
           hatImg: hatImgName,
           mapImg: mapImgName,
           info: infoName,
-          monster: monsters
         })
 
       })
       if (response.ok) {
         console.log("Hat added successfully");
+        alert("Hat added successfully");
         setShow(false)
       } else {
         console.error("Failed to add hat");
@@ -124,18 +121,10 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
   }
 
 
-
-  const handleMonsterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const monsterNames = e.target.value.split(",").map((name) => name.trim());
-
-    const monsterObjects = monsterNames.map((name) => ({ monsterName: name }));
-
-    setMonsters(monsterObjects);
+  const handleReqsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const reqs = e.target.value.split(",").map((name) => name.trim());
+    setRequires(reqs);
   };
-
-
-
-
 
 
   return (
@@ -146,7 +135,9 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
           action="">
           <div className="flex justify-between gap-2">
             <label htmlFor="">hat name:</label>
-            <input className="bg-gray-200" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            <input className="bg-gray-200" type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="flex justify-between gap-2">
             <label htmlFor="">map:</label>
@@ -177,11 +168,11 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
               onChange={(e) => setTier(e.target.value)} />
           </div>
           <div className="flex justify-between gap-2">
-            <label htmlFor="">monster:</label>
+            <label htmlFor="">requirements:</label>
             <input
               className="bg-gray-200" type="text"
-              value={monsters.map((monster) => monster.monsterName).join(", ")}
-              onChange={handleMonsterChange} />
+              value={requires.join(", ")}
+              onChange={handleReqsChange} />
           </div>
 
           <div className="flex justify-between gap-2">

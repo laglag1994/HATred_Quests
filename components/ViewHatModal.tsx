@@ -1,13 +1,13 @@
 import Modal from "./Modal";
 import { Hatred } from "@prisma/client";
-import { Monster } from "@prisma/client";
+import { Requirements } from "@prisma/client";
 
 interface viewHatInfo {
   show: boolean;
   setShow: (show: boolean) => void;
   hatredView: Hatred & {
-    monsters: Monster[];
-  } | null;
+    requirements: Requirements[];
+  } | null; 
 
 }
 
@@ -16,7 +16,6 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
   if (!hatredView) {
     return null;
   }
-  console.log(hatredView.hatName)
   return (
     <Modal show={show} setShow={setShow} title={hatredView.hatName}>
       <div className="flex gap-5" >
@@ -24,11 +23,11 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
           <span>
             <img src={`/api/image/${hatredView.info}`} alt="" />
           </span>
-          <span className="font-bold">Monster:</span>
+          <span className="font-bold">Requires:</span>
           <ul className='list-disc px-10 '>
-            {hatredView.monsters.map((mob, mobIndex) => (
-              <li className="" key={mobIndex}>
-                {mob.monsterName}
+            {hatredView.requirements.map((req, index) => (
+              <li className="" key={index}>
+                {req.reqs}
               </li>
             ))}
           </ul>

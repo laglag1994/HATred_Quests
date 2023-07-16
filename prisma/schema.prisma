@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["createMany"]
 }
 
 datasource db {
@@ -9,20 +8,20 @@ datasource db {
 }
 
 model Hatred {
-  id         Int       @id @default(autoincrement())
-  hatName    String
-  hatImg     String
-  mapName    String
-  mapImg     String
-  mapLvlFrom Int
-  mapLvlTo   Int
-  info       String
-  tier       String?
-  monsters   Monster[]
+  id           Int            @id @default(autoincrement())
+  hatName      String
+  hatImg       String
+  mapName      String
+  mapImg       String
+  mapLvlFrom   Int
+  mapLvlTo     Int
+  info         String
+  tier         String
+  requirements Requirements[]
 }
 
-model Monster {
-  id          Int      @id @default(autoincrement())
-  monsterName String
-  hatreds     Hatred[]
+model Requirements {
+id       Int     @id @default(autoincrement())
+reqs     String
+hatreds  Hatred[]
 }
