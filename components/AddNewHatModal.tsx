@@ -15,7 +15,7 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
   const [lvlFrom, setLvlFrom] = useState(0)
   const [lvlTo, setLvlTo] = useState(0)
   const [tier, setTier] = useState("")
-  const [requires, setRequires] = useState<string[]>([]);
+  const [requires, setRequires] = useState("");
 
 
   //img
@@ -51,7 +51,7 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
           mapLvlFrom: lvlFrom,
           mapLvlTo: lvlTo,
           tier: tier,
-          reqs: requires,
+          reqs: requires.split(","),
           hatImg: hatImgName,
           mapImg: mapImgName,
           info: infoName,
@@ -121,10 +121,6 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
   }
 
 
-  const handleReqsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const reqs = e.target.value.split(",").map((name) => name.trim());
-    setRequires(reqs);
-  };
 
 
   return (
@@ -171,8 +167,8 @@ const AddNewHatModal: React.FC<AddNewHat> = ({ show, setShow }) => {
             <label htmlFor="">requirements:</label>
             <input
               className="bg-gray-200" type="text"
-              value={requires.join(", ")}
-              onChange={handleReqsChange} />
+              value={requires}
+              onChange={(e) => setRequires(e.target.value)} />
           </div>
 
           <div className="flex justify-between gap-2">

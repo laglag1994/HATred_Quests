@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddNewHatModal from "../../components/AddNewHatModal";
 import requireAuthentication from "../../components/WithAuthentication"
 import HatCard, { HatCardInfo } from '../../components/HatCard'
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import router from "next/router";
 
 
 
@@ -18,9 +19,20 @@ const Dashboard = () => {
   if (error) return 'An error has occurred: ' + error
 
 
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    router.push('/');
+  }
+
 
   return (
     <div className='flex flex-col justify-start gap-10 bg-[#2C3639] min-h-screen pb-20'>
+
+      <button
+      onClick={()=>localStorage.removeItem("token")}
+      >logout</button>
+
       <div className='flex justify-center items-center gap-2 bg-[#3F4E4F] w-full py-5'>
         <img src="/PRM.png" alt="" height={100} width={100} />
         <h1 className='text-4xl text-white'>Dashboard</h1>
@@ -83,6 +95,5 @@ const Dashboard = () => {
   );
 }
 
-const AuthenticatedDashboard = requireAuthentication(Dashboard);
 
-export default AuthenticatedDashboard;
+export default Dashboard;
