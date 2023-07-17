@@ -41,5 +41,5 @@ dev.db
 #imgs
 /images
 
-
+#env
 .env
