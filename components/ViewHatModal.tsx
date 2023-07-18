@@ -55,4 +55,5 @@ const ViewHatModal: React.FC<viewHatInfo> = ({ hatredView, show, setShow }) => {
   )
 }
 
+
 export default ViewHatModal
