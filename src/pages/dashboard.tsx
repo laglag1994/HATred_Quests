@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AddNewHatModal from "../../components/AddNewHatModal";
-import requireAuthentication from "../../components/WithAuthentication"
 import HatCard, { HatCardInfo } from '../../components/HatCard'
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import router from "next/router";
