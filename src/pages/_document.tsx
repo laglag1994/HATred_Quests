@@ -4,6 +4,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
+      <title>HATred Quests</title>
+
       <body>
         <Main />
         <NextScript />
